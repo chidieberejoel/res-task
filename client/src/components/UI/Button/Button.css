@@ -1,0 +1,21 @@
+.LoginLink {
+    display: flex;
+    outline-offset: -1px;
+    line-height: 30px;
+    white-space: nowrap;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: black;
+    border-radius: 2px;
+    color: white;
+}
+
+.LoginLink:hover,
+.LoginLink:focus,
+.LoginLink:active {
+    background-color: rgb(48, 48, 48);
+    text-decoration: none;
+    color: white;
+    outline: none;
+}

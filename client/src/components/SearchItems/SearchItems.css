@@ -1,0 +1,8 @@
+.SearchInput {
+    border: none;
+    display: block;
+    font-size: 24;
+    font-weight: 200;
+    outline: none;
+    width: 100%;
+}
