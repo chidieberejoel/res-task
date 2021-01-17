@@ -8,7 +8,7 @@ class Auth {
       return res.redirect("/");
     }
     const urlParameters = {
-      scopes: config.scopes.split(","),
+      scopes: config.scopes.split(),
       redirectUri: config.redirectUri,
     };
 
@@ -23,20 +23,11 @@ class Auth {
     }
   }
 
-  static async currentSession(req, res) {
-    const { user } = req.session;
-    if (!user) {
-      res.send(false);
-    } else {
-      res.send(true);
-    }
-  }
-
   // Callback Snippet
   static async getCallback(req, res) {
     const tokenRequest = {
       code: req.query.code,
-      scopes: config.scopes.split(","),
+      scopes: config.scopes.split(),
       redirectUri: config.redirectUri,
     };
 
@@ -51,6 +42,16 @@ class Auth {
       res.redirect("/");
     }
     res.redirect("/");
+  }
+
+  // Check if a user session exist
+  static async currentSession(req, res) {
+    const { user } = req.session;
+    if (!user) {
+      res.send(false);
+    } else {
+      res.send(true);
+    }
   }
 
   static async getSignOut(req, res) {
@@ -72,7 +73,7 @@ class Auth {
     }
 
     // Destroy the user's session
-    req.session.destroy((err) => {
+    req.session.destroy(() => {
       res.redirect("/");
       logger.info("User sucessfully logged out");
     });

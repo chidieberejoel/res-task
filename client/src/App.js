@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 
 import axios from "./axios-orders";
 
@@ -6,24 +6,32 @@ import Dashboard from "./containers/Dashboard/Dashboard";
 import Loading from "./containers/Loading/Loading";
 import Auth from "./containers/Auth/Auth";
 
-function App() {
-  const [auth, setAuth] = useState(null);
+class App extends Component {
+  state = {
+    auth: null,
+    loading: true,
+  };
 
-  useEffect(() => {
+  componentDidMount() {
     axios
       .get("/auth/current-session", { withCredentials: true })
-      .then(({ data }) => {
-        setAuth(data);
+      .then((res) => {
+        this.setState({ loading: false, auth: res.data });
+      })
+      .catch((err) => {
+        this.setState({ loading: false });
       });
-  }, []);
+  }
 
-  if (auth === null) {
-    return <Loading />;
+  render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
+    if (this.state.auth) {
+      return <Dashboard />;
+    }
+    return <Auth />;
   }
-  if (auth) {
-    return <Dashboard />;
-  }
-  return <Auth />;
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   AtlassianNavigation,
   CustomProductHome,
@@ -6,40 +6,44 @@ import {
   SignIn,
 } from "@atlaskit/atlassian-navigation";
 
-import customIcon from "../UI/Assets/Images/logo123.jpg";
+import customIcon from "../../Assets/Images/logo123.jpg";
 
-const theme = generateTheme({
-  name: "high-contrast",
-  backgroundColor: "#272727",
-  highlightColor: "#E94E34",
-});
+class Layout extends Component {
+  theme = generateTheme({
+    name: "high-contrast",
+    backgroundColor: "#272727",
+    highlightColor: "#E94E34",
+  });
 
-const CustomHome = () => (
-  <CustomProductHome
-    href="/"
-    iconAlt="Sign Out"
-    iconUrl={customIcon}
-    logoAlt="Sign Out"
-    logoUrl={customIcon}
-  />
-);
-
-const SignInExample = () => {
-  return (
-    <a href={"/auth/signout"}>
-      <SignIn tooltip="Sign Out" />
-    </a>
+  CustomHome = () => (
+    <CustomProductHome
+      href="/"
+      iconAlt="Sign Out"
+      iconUrl={customIcon}
+      logoAlt="Sign Out"
+      logoUrl={customIcon}
+    />
   );
-};
 
-const ThemingExample = () => (
-  <AtlassianNavigation
-    label="site"
-    renderProductHome={CustomHome}
-    testId="themed"
-    renderSignIn={SignInExample}
-    theme={theme}
-  />
-);
+  SignInExample = () => {
+    return (
+      <a href={"/auth/signout"}>
+        <SignIn tooltip="Sign Out" />
+      </a>
+    );
+  };
 
-export default ThemingExample;
+  render() {
+    return (
+      <AtlassianNavigation
+        label="site"
+        renderProductHome={this.CustomHome}
+        testId="themed"
+        renderSignIn={this.SignInExample}
+        theme={this.theme}
+      />
+    );
+  }
+}
+
+export default Layout;

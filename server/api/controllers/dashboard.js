@@ -9,37 +9,40 @@ class GetRestaurant {
     // Get all DB elements
     const findAll = await Restaurant.find({}).lean();
 
-    // GET List of restaurants' names
+    // Get List of restaurants' names
     const restaurantNames = findAll.map((a) => a.name);
 
-    // GET List of restaurants' open hours
+    // Get List of restaurants' open hours
     const openHours = findAll.map((a) => a.open_hours);
-    const initAppointments = openHours
-      .map((a) => a.trim().split("  / "));
+    const initAppointments = openHours.map((a) => a.trim().split("  / "));
 
     try {
-      const d = new Date("Fri Jan 15 2021 21:10:04");
+      const d = new Date();
+
+      // Get restaurants' daily opening and closing hours
       const r = getOpenRes(initAppointments, restaurantNames, d);
 
-      const closeSoonCheck = (objVal) => {
+      // Function to check if a restaurant is closing soon
+      const closesSoonCheck = (objVal) => {
         const getTime = moment().format("ddd");
         const closeTime = objVal.hours[getTime].close;
         const b = moment(closeTime, "hh:mm a");
         const curTime = moment();
         const diff = Number(b.diff(curTime, "minutes"));
 
-        if (diff <= 60) {
+        if (diff >= 0 && diff <= 60) {
           return true;
         }
         return false;
       };
 
-      await r.map((el) => Object.assign(el, { closing: closeSoonCheck(el) }));
+      await r.map((el) => Object.assign(el, { closing: closesSoonCheck(el) }));
 
       const restNames = r.map((el) => el.name);
 
       const searchDB = findAll.filter((e) => restNames.includes(e.name));
 
+      // Add "closing soon" tag to open restaurants at a time
       const result = [
         ...searchDB
           .concat(r)

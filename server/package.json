@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Coding Challenge",
   "main": "index.js",
+  "engines": {
+    "node": "14.2.0"
+  },
   "scripts": {
     "start": "babel-node index.js",
     "dev": "nodemon index.js --exec babel-node",

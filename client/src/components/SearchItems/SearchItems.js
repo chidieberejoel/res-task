@@ -1,33 +1,9 @@
 import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
-import styled from "styled-components";
 import Page, { Grid, GridColumn } from "@atlaskit/page";
 import WarningIcon from "@atlaskit/icon/glyph/warning";
 
-const Dummy = styled.div`
-  border: 1px solid black;
-  margin: 16px 0;
-  padding: 20px;
-  flex-direction: row !important;
-  display: flex !important;
-  border: 1px solid #d3d3d3;
-  border-radius: 2px;
-`;
-
-const Rest = styled.div`
-  flex-shrink: 0 !important;
-  width: 75%;
-  display: block;
-`;
-
-const Warning = styled.div`
-  flex-shrink: 0 !important;
-  width: 25%;
-  display: block;
-  text-align: center;
-  color: #ca0b00;
-  padding: 0 10px;
-`;
+import "./SearchItems.css";
 
 class SearchResults extends PureComponent {
   static propTypes = {
@@ -46,22 +22,22 @@ class SearchResults extends PureComponent {
           <Grid spacing="comfortable">
             {this.props.matchingResults.map((result) => (
               <GridColumn key={result._id} medium={6}>
-                <Dummy>
-                  <Rest>
+                <div className="Dummy">
+                  <div className="Result">
                     <b>{result.name}</b>
                     <span style={{ display: "block" }}>
                       {result.open_hours}
                     </span>
-                  </Rest>
+                  </div>
                   {result.closing ? (
-                    <Warning>
+                    <div className="Warning">
                       <WarningIcon />
                       <span style={{ display: "block" }}> Closes soon </span>
-                    </Warning>
+                    </div>
                   ) : (
                     ""
                   )}
-                </Dummy>
+                </div>
               </GridColumn>
             ))}
           </Grid>

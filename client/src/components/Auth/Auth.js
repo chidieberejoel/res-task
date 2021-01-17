@@ -11,7 +11,7 @@ class AuthVal extends PureComponent {
       <Page>
         <div className="Centered">
           <div className="DivContainer">
-            <Grid layout="fluid">
+            <Grid>
               <GridColumn medium={12}>
                 <h2>Welcome!</h2>
                 <Avatar />

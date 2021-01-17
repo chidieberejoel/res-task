@@ -13,16 +13,16 @@ const getRoutes = () => {
   // GET request for Dashboard page
   router.get("/dashboard", dashboard.dashboard);
 
-  // GET request auth signin page
+  // GET request to signing a user
   router.get("/auth/signin", auth.getSignIn);
 
-  // GET request auth signin page
+  // GET request to check if a user is logged in
   router.get("/auth/current-session", auth.currentSession);
 
-  // GET request auth Index page
+  // GET auth callback
   router.get("/auth/callback", auth.getCallback);
 
-  // GET request auth Index page
+  // GET request to signout currently logged in user
   router.get("/auth/signout", auth.getSignOut);
   return router;
 };

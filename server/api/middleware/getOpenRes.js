@@ -2,6 +2,7 @@ import moment from "moment";
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+// Function to show only open restaurants and open hours
 const parseData = (initAppointments, restaurantNames) => {
   const appointments = initAppointments.map((ia) => {
     if (ia) {
@@ -45,7 +46,8 @@ const parseData = (initAppointments, restaurantNames) => {
 
 const findOpenRestaurants = (
   initAppointments,
-  restaurantNames, searchDatetime,
+  restaurantNames,
+  searchDatetime,
 ) => {
   const data = parseData(initAppointments, restaurantNames);
   const day = searchDatetime.getDay();

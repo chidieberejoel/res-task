@@ -8,7 +8,6 @@ export default {
     // Session middleware
     app.use(
       session({
-        maxAge: new Date(Date.now() + 60 * 60 * 24 * 7 * 1000),
         secret: config.sessionSecret,
         resave: false,
         saveUninitialized: false,
@@ -29,6 +28,7 @@ export default {
       if (!req.session.user) {
         return next();
       }
+      // eslint-disable-next-line no-underscore-dangle
       User.findById(req.session.user._id)
         .then((user) => {
           if (!user) {

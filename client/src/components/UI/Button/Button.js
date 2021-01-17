@@ -11,7 +11,7 @@ class AuthButton extends Component {
           version="1.1"
           width="40"
           height="40"
-          style={{ display: "inline-block" }}
+          className="SvgIcon"
         >
           <path fill="#f25022" d="M13 11h9v9h-9z" />
           <path fill="#00a4ef" d="M13 21h9v9h-9z" />

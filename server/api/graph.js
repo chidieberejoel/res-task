@@ -1,6 +1,3 @@
-// import graph from "@microsoft/microsoft-graph-client";
-
-// require("isomorphic-fetch");
 import logger from "./config/winstonlog";
 import User from "./models/user";
 
@@ -26,10 +23,12 @@ module.exports = {
 
     const userClient = await client
       .api("/me")
-      .select("displayName,mail,mailboxSettings,userPrincipalName")
+      .select("displayName,mail,userPrincipalName")
       .get();
 
-    const user = await User.findOne({ email: userClient.mail || userClient.userPrincipalName });
+    const user = await User.findOne({
+      email: userClient.mail || userClient.userPrincipalName,
+    });
 
     try {
       if (!user) {
@@ -45,6 +44,7 @@ module.exports = {
         req.session.user = user;
       }
       req.session.isLoggedIn = true;
+      // save session upon login
       await req.session.save();
       logger.info("Session Saved");
     } catch (err) {

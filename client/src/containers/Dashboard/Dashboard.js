@@ -9,6 +9,8 @@ import Layout from "../../hoc/Layout/Layout";
 import Loading from "../Loading/Loading";
 import axios from "../../axios-orders";
 
+import "./Dashboard.css";
+
 class SearchDrawer extends Component {
   static propTypes = {
     onResultClicked: PropTypes.func,
@@ -72,20 +74,12 @@ class SearchDrawer extends Component {
               type="text"
               placeholder="Search..."
               onKeyUp={this.filterChange}
-              className="searchInput"
+              className="SearchInput"
               ref={(el) => {
                 this.searchInput = el;
                 if (this.props.onSearchInputRef) {
                   this.props.onSearchInputRef(el);
                 }
-              }}
-              style={{
-                border: "none",
-                display: "block",
-                fontSize: 24,
-                fontWeight: 200,
-                outline: "none",
-                width: "100%",
               }}
             />
             {this.searchResults()}
