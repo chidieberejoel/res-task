@@ -1,7 +1,7 @@
-import express from "express";
-import index from "../controllers";
-import auth from "../controllers/auth";
-import dashboard from "../controllers/dashboard";
+const express = require("express");
+const index = require("../controllers");
+const auth = require("../controllers/auth");
+const dashboard = require("../controllers/dashboard");
 
 const getRoutes = () => {
   const router = new express.Router();
@@ -27,4 +27,4 @@ const getRoutes = () => {
   return router;
 };
 
-export default getRoutes;
+module.exports = getRoutes;

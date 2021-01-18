@@ -1,6 +1,6 @@
-import graph from "../graph";
-import config from "../config";
-import logger from "../config/winstonlog";
+const graph = require("../graph");
+const config = require("../config");
+const logger = require("../config/winstonlog");
 
 class Auth {
   static async getSignIn(req, res) {
@@ -80,4 +80,4 @@ class Auth {
   }
 }
 
-export default Auth;
+module.exports = Auth;

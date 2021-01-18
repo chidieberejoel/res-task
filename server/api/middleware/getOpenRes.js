@@ -1,4 +1,4 @@
-import moment from "moment";
+const moment = require("moment");
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -69,4 +69,4 @@ const findOpenRestaurants = (
   return res;
 };
 
-export default findOpenRestaurants;
+module.exports = findOpenRestaurants;

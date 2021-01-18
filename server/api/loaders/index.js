@@ -1,8 +1,8 @@
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 
-export default {
+module.exports = {
   init: (app) => {
     app.use(helmet());
     app.use(express.json());

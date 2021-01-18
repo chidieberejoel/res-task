@@ -7,8 +7,8 @@
     "node": "14.2.0"
   },
   "scripts": {
-    "start": "babel-node index.js",
-    "dev": "nodemon index.js --exec babel-node",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix --ignore-path .eslintignore"
   },
@@ -19,11 +19,6 @@
   "author": "Chidiebere Joel",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/register": "^7.12.10",
-    "babel-loader": "^8.2.2",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

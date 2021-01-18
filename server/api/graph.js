@@ -1,7 +1,7 @@
-import logger from "./config/winstonlog";
-import User from "./models/user";
-
 const graph = require("@microsoft/microsoft-graph-client");
+const logger = require("./config/winstonlog");
+const User = require("./models/user");
+
 require("isomorphic-fetch");
 
 const getAuthenticatedClient = (accessToken) => {

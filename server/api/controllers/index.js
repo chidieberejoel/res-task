@@ -1,5 +1,5 @@
-import logger from "../config/winstonlog";
-import config from "../config";
+const logger = require("../config/winstonlog");
+const config = require("../config");
 
 class GetIndex {
   static async index(req, res) {
@@ -13,4 +13,4 @@ class GetIndex {
   }
 }
 
-export default GetIndex;
+module.exports = GetIndex;

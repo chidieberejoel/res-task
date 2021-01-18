@@ -1,6 +1,6 @@
-import mongoDBSession from "connect-mongodb-session";
-import session from "express-session";
-import config from "./index";
+const mongoDBSession = require("connect-mongodb-session");
+const session = require("express-session");
+const config = require("./index");
 
 const MongoDBStore = mongoDBSession(session);
 

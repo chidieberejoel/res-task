@@ -1,7 +1,7 @@
-import logger from "../config/winstonlog";
-import getRoutes from "../routes";
+const logger = require("../config/winstonlog");
+const getRoutes = require("../routes");
 
-export default {
+module.exports = {
   init: (app) => {
     // Mount API routes
     app.use("/", getRoutes());

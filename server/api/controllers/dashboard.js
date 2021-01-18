@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import moment from "moment";
-import logger from "../config/winstonlog";
-import getOpenRes from "../middleware/getOpenRes";
-import Restaurant from "../models/restaurant";
+const moment = require("moment");
+const logger = require("../config/winstonlog");
+const getOpenRes = require("../middleware/getOpenRes");
+const Restaurant = require("../models/restaurant");
 
 class GetRestaurant {
   static async dashboard(req, res) {
@@ -63,4 +63,4 @@ class GetRestaurant {
   }
 }
 
-export default GetRestaurant;
+module.exports = GetRestaurant;

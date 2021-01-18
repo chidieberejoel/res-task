@@ -1,6 +1,6 @@
-import app from "./api";
-import config from "./api/config";
-import logger from "./api/config/winstonlog";
+const app = require("./api");
+const config = require("./api/config");
+const logger = require("./api/config/winstonlog");
 
 /**
  *

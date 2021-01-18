@@ -1,13 +1,13 @@
-import express from "express";
-import config from "./config";
-import loader from "./loaders";
-import session from "./loaders/session";
-import routes from "./loaders/route";
-import logger from "./config/winstonlog";
-import Database from "./config/dbConnection";
+const express = require("express");
+const msal = require("@azure/msal-node");
+const config = require("./config");
+const loader = require("./loaders");
+const session = require("./loaders/session");
+const routes = require("./loaders/route");
+const logger = require("./config/winstonlog");
+const Database = require("./config/dbConnection");
 
 // Works with require statement
-const msal = require("@azure/msal-node");
 
 const app = express();
 
@@ -45,4 +45,4 @@ app.locals.msalClient = new msal.ConfidentialClientApplication(msalConfig);
 const db = new Database();
 db.connect(config.DbUrl);
 
-export default app;
+module.exports = app;

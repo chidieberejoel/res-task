@@ -1,9 +1,9 @@
-import session from "express-session";
-import User from "../models/user";
-import store from "../config/store";
-import config from "../config";
+const session = require("express-session");
+const User = require("../models/user");
+const store = require("../config/store");
+const config = require("../config");
 
-export default {
+module.exports = {
   init: (app) => {
     // Session middleware
     app.use(

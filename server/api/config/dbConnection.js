@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import logger from "./winstonlog";
+const mongoose = require("mongoose");
+const logger = require("./winstonlog");
 
 class Database {
   constructor() {
@@ -25,4 +25,4 @@ class Database {
   }
 }
 
-export default Database;
+module.exports = Database;

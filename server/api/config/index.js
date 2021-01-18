@@ -1,5 +1,4 @@
-import cors from "cors";
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
 
 dotenv.config();
 
