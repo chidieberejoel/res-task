@@ -3,8 +3,14 @@ const User = require("../models/user");
 const store = require("../config/store");
 const config = require("../config");
 
+const isDevMode = config.nodeEnv === "development";
+
 module.exports = {
   init: (app) => {
+    if (!isDevMode) {
+      app.set("trust proxy", 1);
+    }
+
     // Session middleware
     app.use(
       session({
@@ -14,6 +20,9 @@ module.exports = {
         store,
         cookie: {
           maxAge: 7 * 24 * 60 * 60 * 1000,
+          sameSite: true,
+          httpOnly: true,
+          secure: !isDevMode,
         },
       }),
     );

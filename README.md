@@ -18,33 +18,41 @@ Open a browser and navigate to the [Azure Active Directory admin center](https:/
 ## Generate MongoDB URI String
 [Read Here](https://docs.mongodb.com/guides/server/drivers/)
 
-## Configure the sample
-1. Navigate to a directory of your choice using a CLI and run the following command:
+## Configure the app
+- Navigate to a directory of your choice using a CLI and run the following command:
 
 ```
 git clone https://github.com/chidieberejoel/res-task.git
+cd res-task 
+cd server
 ```
-
-1. Rename the `env.localhost.temp` file to `.env`.
-1. Edit the `.env` file and make the following changes.
+1. Rename the `env.localhost.template` file to `.env`
+2. Edit the `.env` file and make the following changes.
     1. Replace `CLIENT_ID_HERE` with the **Application Id** you got from the App Registration Portal.
-    1. Replace `SECRET_ID_HERE` with the **Client Secret value** you got from the App Registration Portal.
-1. Replace the "DB_URL" variable with your Mongodb URI string.
-1. Import open_hours.csv into your Database to a schema titled **restaurants**
+    2. Replace `SECRET_ID_HERE` with the **Client Secret value** you got from the App Registration Portal.
+3. Replace the "DB_URL" variable with your Mongodb URI string.
+4. Import open_hours.csv into your Database to a schema titled **restaurants**
+
+- In the CLI run the following command:
+```
+cd ..
+cd client
+```
+Rename the `env.localhost.template` file to `.env`
 
 ## Run the application
 In your CLI, run the following commands in the order:
-1. Front-end
+- Front-end
 
 ```
 cd client
 npm install
 npm start
 ```
-1. Server
+- Server
 ```
 cd server
 npm install
 npm start
 ```
-1. Open a browser and browse to `http://localhost:3000`.
+Open a browser and browse to `http://localhost:3000
